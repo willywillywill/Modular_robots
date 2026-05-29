@@ -16,10 +16,12 @@ RUN apt-get update && \
     chmod 0440 /etc/sudoers.d/$USERNAME
 
 
-RUN apt install apt install ros-noetic-desktop-full
-#RUN apt install python3-pip -y
-#RUN apt-get install python3-opencv -y
-#RUN apt install -y ros-noetic-rviz
+
+RUN apt install -y nano
+RUN apt install -y python3-pip
+RUN apt-get install -y python3-opencv
+RUN apt install -y ros-noetic-rviz
+RUN apt install -y ros-noetic-rqt-graph
 
 
 # Switch from root to user
