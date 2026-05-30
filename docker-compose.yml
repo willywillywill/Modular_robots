@@ -9,6 +9,7 @@ services:
 
     devices:
       - /dev:/dev
+      - /dev/ttyUSB0:/dev/ttyUSB0
 
 
     environment:
