@@ -16,10 +16,11 @@ RUN apt-get update && \
     chmod 0440 /etc/sudoers.d/$USERNAME
 
 
-RUN apt install apt install ros-noetic-desktop-full
-#RUN apt install python3-pip -y
-#RUN apt-get install python3-opencv -y
-#RUN apt install -y ros-noetic-rviz
+RUN apt install -y nano
+RUN apt install -y python3-pip
+RUN apt-get install -y python3-opencv
+RUN apt install -y ros-noetic-rviz
+RUN apt install -y ros-noetic-rqt-graph
 
 
 # Switch from root to user
@@ -41,10 +42,10 @@ RUN rosdep update
 
 # Source the ROS setup file
 RUN echo "source /opt/ros/${ROS_DISTRO}/setup.bash" >> ~/.bashrc
+RUN echo "source ./devel/setup.bash" >> ~/.bashrc
 
 # x11 apps for testing GUI applications
 RUN sudo apt install -y x11-apps
-
 
 ################################
 ## ADD ANY CUSTOM SETUP BELOW ##
