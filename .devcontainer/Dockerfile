@@ -17,11 +17,12 @@ RUN apt-get update && \
 
 
 
-RUN apt install -y nano
-RUN apt install -y python3-pip
-RUN apt-get install -y python3-opencv
+RUN apt install ros-noetic-turtlesim -y
+RUN apt install ros-noetic-slam-gmapping -y
+RUN apt install python3-pip -y
+RUN apt-get install python3-opencv -y
 RUN apt install -y ros-noetic-rviz
-RUN apt install -y ros-noetic-rqt-graph
+RUN apt install -y nano
 
 
 # Switch from root to user
@@ -43,7 +44,7 @@ RUN rosdep update
 
 # Source the ROS setup file
 RUN echo "source /opt/ros/${ROS_DISTRO}/setup.bash" >> ~/.bashrc
-
+RUN echo "source ./devel/setup.bash" >> ~/.bashrc
 # x11 apps for testing GUI applications
 RUN sudo apt install -y x11-apps
 
@@ -51,3 +52,8 @@ RUN sudo apt install -y x11-apps
 ################################
 ## ADD ANY CUSTOM SETUP BELOW ##
 ################################
+
+# SDK for YDLidar
+# cd /home/jetson/Desktop/rplidar_ws/src/YDLidar-SDK/build
+# sudo make install
+# sudo chmod 666 /dev/ttyUSB0
