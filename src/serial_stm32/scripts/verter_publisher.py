@@ -9,7 +9,7 @@ def verter_publisher():
     rate = rospy.Rate(10) # 10hz
     while not rospy.is_shutdown():
         msg = Verter()
-        msg.x, msg.y = map(int, input().split())
+        msg.x, msg.y = map(float, input().split())
         pub.publish(msg)
         rate.sleep()
 

@@ -1,2 +1,2 @@
-rplidar_ros:serial_stm32
+bot_move:rplidar_ros:serial_stm32
 -DCATKIN_DEVEL_PREFIX=/ros_ws/devel -DCMAKE_INSTALL_PREFIX=/ros_ws/install -G Unix Makefiles

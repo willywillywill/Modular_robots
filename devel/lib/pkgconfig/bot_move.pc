@@ -1,0 +1,8 @@
+prefix=/ros_ws/devel
+
+Name: bot_move
+Description: Description of bot_move
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

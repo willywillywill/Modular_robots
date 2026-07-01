@@ -57,3 +57,5 @@ RUN sudo apt install -y x11-apps
 # cd /home/jetson/Desktop/rplidar_ws/src/YDLidar-SDK/build
 # sudo make install
 # sudo chmod 666 /dev/ttyUSB0
+# pip install git+https://github.com/RobLibs/Rosmaster_Lib@V3.3.9
+# pip install ipywidgets

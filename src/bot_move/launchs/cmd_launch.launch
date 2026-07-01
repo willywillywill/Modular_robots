@@ -1,0 +1,24 @@
+<launch>
+    <arg name="com_port" default="/dev/ttyUSB0" />
+    <node 
+        name="move_subscriber" 
+        pkg="bot_move" 
+        type="move_sub.py" 
+        args="$(arg com_port)"
+     />
+
+    <node 
+        name="key_publisher" 
+        pkg="bot_move" 
+        type="key_pub.py" 
+        args="$(arg com_port)"
+     />
+    <node 
+        name="odom_publisher" 
+        pkg="bot_move" 
+        type="odom_pub.py" 
+        args="$(arg com_port)"
+     />
+
+
+</launch>

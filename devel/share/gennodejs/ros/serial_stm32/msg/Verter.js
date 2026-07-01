@@ -26,13 +26,13 @@ class Verter {
         this.x = initObj.x
       }
       else {
-        this.x = 0;
+        this.x = 0.0;
       }
       if (initObj.hasOwnProperty('y')) {
         this.y = initObj.y
       }
       else {
-        this.y = 0;
+        this.y = 0.0;
       }
     }
   }
@@ -40,9 +40,9 @@ class Verter {
   static serialize(obj, buffer, bufferOffset) {
     // Serializes a message object of type Verter
     // Serialize message field [x]
-    bufferOffset = _serializer.int8(obj.x, buffer, bufferOffset);
+    bufferOffset = _serializer.float64(obj.x, buffer, bufferOffset);
     // Serialize message field [y]
-    bufferOffset = _serializer.int8(obj.y, buffer, bufferOffset);
+    bufferOffset = _serializer.float64(obj.y, buffer, bufferOffset);
     return bufferOffset;
   }
 
@@ -51,14 +51,14 @@ class Verter {
     let len;
     let data = new Verter(null);
     // Deserialize message field [x]
-    data.x = _deserializer.int8(buffer, bufferOffset);
+    data.x = _deserializer.float64(buffer, bufferOffset);
     // Deserialize message field [y]
-    data.y = _deserializer.int8(buffer, bufferOffset);
+    data.y = _deserializer.float64(buffer, bufferOffset);
     return data;
   }
 
   static getMessageSize(object) {
-    return 2;
+    return 16;
   }
 
   static datatype() {
@@ -68,14 +68,14 @@ class Verter {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return '6a20b9d8cfb71fa36c504f7f2d8fb5dc';
+    return '209f516d3eb691f0663e25cb750d67c1';
   }
 
   static messageDefinition() {
     // Returns full string definition for message
     return `
-    int8 x
-    int8 y
+    float64 x
+    float64 y
     `;
   }
 
@@ -89,14 +89,14 @@ class Verter {
       resolved.x = msg.x;
     }
     else {
-      resolved.x = 0
+      resolved.x = 0.0
     }
 
     if (msg.y !== undefined) {
       resolved.y = msg.y;
     }
     else {
-      resolved.y = 0
+      resolved.y = 0.0
     }
 
     return resolved;

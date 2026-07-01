@@ -8,13 +8,13 @@ import struct
 
 
 class Verter(genpy.Message):
-  _md5sum = "6a20b9d8cfb71fa36c504f7f2d8fb5dc"
+  _md5sum = "209f516d3eb691f0663e25cb750d67c1"
   _type = "serial_stm32/Verter"
   _has_header = False  # flag to mark the presence of a Header object
-  _full_text = """int8 x
-int8 y"""
+  _full_text = """float64 x
+float64 y"""
   __slots__ = ['x','y']
-  _slot_types = ['int8','int8']
+  _slot_types = ['float64','float64']
 
   def __init__(self, *args, **kwds):
     """
@@ -34,12 +34,12 @@ int8 y"""
       super(Verter, self).__init__(*args, **kwds)
       # message fields cannot be None, assign default values for those that are
       if self.x is None:
-        self.x = 0
+        self.x = 0.
       if self.y is None:
-        self.y = 0
+        self.y = 0.
     else:
-      self.x = 0
-      self.y = 0
+      self.x = 0.
+      self.y = 0.
 
   def _get_types(self):
     """
@@ -54,7 +54,7 @@ int8 y"""
     """
     try:
       _x = self
-      buff.write(_get_struct_2b().pack(_x.x, _x.y))
+      buff.write(_get_struct_2d().pack(_x.x, _x.y))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -69,8 +69,8 @@ int8 y"""
       end = 0
       _x = self
       start = end
-      end += 2
-      (_x.x, _x.y,) = _get_struct_2b().unpack(str[start:end])
+      end += 16
+      (_x.x, _x.y,) = _get_struct_2d().unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e)  # most likely buffer underfill
@@ -84,7 +84,7 @@ int8 y"""
     """
     try:
       _x = self
-      buff.write(_get_struct_2b().pack(_x.x, _x.y))
+      buff.write(_get_struct_2d().pack(_x.x, _x.y))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -100,8 +100,8 @@ int8 y"""
       end = 0
       _x = self
       start = end
-      end += 2
-      (_x.x, _x.y,) = _get_struct_2b().unpack(str[start:end])
+      end += 16
+      (_x.x, _x.y,) = _get_struct_2d().unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e)  # most likely buffer underfill
@@ -110,9 +110,9 @@ _struct_I = genpy.struct_I
 def _get_struct_I():
     global _struct_I
     return _struct_I
-_struct_2b = None
-def _get_struct_2b():
-    global _struct_2b
-    if _struct_2b is None:
-        _struct_2b = struct.Struct("<2b")
-    return _struct_2b
+_struct_2d = None
+def _get_struct_2d():
+    global _struct_2d
+    if _struct_2d is None:
+        _struct_2d = struct.Struct("<2d")
+    return _struct_2d

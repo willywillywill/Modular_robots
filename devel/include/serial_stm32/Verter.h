@@ -24,21 +24,21 @@ struct Verter_
   typedef Verter_<ContainerAllocator> Type;
 
   Verter_()
-    : x(0)
-    , y(0)  {
+    : x(0.0)
+    , y(0.0)  {
     }
   Verter_(const ContainerAllocator& _alloc)
-    : x(0)
-    , y(0)  {
+    : x(0.0)
+    , y(0.0)  {
   (void)_alloc;
     }
 
 
 
-   typedef int8_t _x_type;
+   typedef double _x_type;
   _x_type x;
 
-   typedef int8_t _y_type;
+   typedef double _y_type;
   _y_type y;
 
 
@@ -128,12 +128,12 @@ struct MD5Sum< ::serial_stm32::Verter_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "6a20b9d8cfb71fa36c504f7f2d8fb5dc";
+    return "209f516d3eb691f0663e25cb750d67c1";
   }
 
   static const char* value(const ::serial_stm32::Verter_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x6a20b9d8cfb71fa3ULL;
-  static const uint64_t static_value2 = 0x6c504f7f2d8fb5dcULL;
+  static const uint64_t static_value1 = 0x209f516d3eb691f0ULL;
+  static const uint64_t static_value2 = 0x663e25cb750d67c1ULL;
 };
 
 template<class ContainerAllocator>
@@ -152,8 +152,8 @@ struct Definition< ::serial_stm32::Verter_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "int8 x\n"
-"int8 y\n"
+    return "float64 x\n"
+"float64 y\n"
 ;
   }
 
@@ -195,11 +195,11 @@ struct Printer< ::serial_stm32::Verter_<ContainerAllocator> >
     if (false || !indent.empty())
       s << std::endl;
     s << indent << "x: ";
-    Printer<int8_t>::stream(s, indent + "  ", v.x);
+    Printer<double>::stream(s, indent + "  ", v.x);
     if (true || !indent.empty())
       s << std::endl;
     s << indent << "y: ";
-    Printer<int8_t>::stream(s, indent + "  ", v.y);
+    Printer<double>::stream(s, indent + "  ", v.y);
   }
 };
 

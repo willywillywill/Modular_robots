@@ -19,12 +19,12 @@
 (defmethod serial_stm32::Verter
   (:init
    (&key
-    ((:x __x) 0)
-    ((:y __y) 0)
+    ((:x __x) 0.0)
+    ((:y __y) 0.0)
     )
    (send-super :init)
-   (setq _x (round __x))
-   (setq _y (round __y))
+   (setq _x (float __x))
+   (setq _y (float __y))
    self)
   (:x
    (&optional __x)
@@ -35,42 +35,40 @@
   (:serialization-length
    ()
    (+
-    ;; int8 _x
-    1
-    ;; int8 _y
-    1
+    ;; float64 _x
+    8
+    ;; float64 _y
+    8
     ))
   (:serialize
    (&optional strm)
    (let ((s (if strm strm
               (make-string-output-stream (send self :serialization-length)))))
-     ;; int8 _x
-       (write-byte _x s)
-     ;; int8 _y
-       (write-byte _y s)
+     ;; float64 _x
+       (sys::poke _x (send s :buffer) (send s :count) :double) (incf (stream-count s) 8)
+     ;; float64 _y
+       (sys::poke _y (send s :buffer) (send s :count) :double) (incf (stream-count s) 8)
      ;;
      (if (null strm) (get-output-stream-string s))))
   (:deserialize
    (buf &optional (ptr- 0))
-   ;; int8 _x
-     (setq _x (sys::peek buf ptr- :char)) (incf ptr- 1)
-     (if (> _x 127) (setq _x (- _x 256)))
-   ;; int8 _y
-     (setq _y (sys::peek buf ptr- :char)) (incf ptr- 1)
-     (if (> _y 127) (setq _y (- _y 256)))
+   ;; float64 _x
+     (setq _x (sys::peek buf ptr- :double)) (incf ptr- 8)
+   ;; float64 _y
+     (setq _y (sys::peek buf ptr- :double)) (incf ptr- 8)
    ;;
    self)
   )
 
-(setf (get serial_stm32::Verter :md5sum-) "6a20b9d8cfb71fa36c504f7f2d8fb5dc")
+(setf (get serial_stm32::Verter :md5sum-) "209f516d3eb691f0663e25cb750d67c1")
 (setf (get serial_stm32::Verter :datatype-) "serial_stm32/Verter")
 (setf (get serial_stm32::Verter :definition-)
-      "int8 x
-int8 y
+      "float64 x
+float64 y
 ")
 
 
 
-(provide :serial_stm32/Verter "6a20b9d8cfb71fa36c504f7f2d8fb5dc")
+(provide :serial_stm32/Verter "209f516d3eb691f0663e25cb750d67c1")
 
 
