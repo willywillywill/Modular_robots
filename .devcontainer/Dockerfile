@@ -23,7 +23,7 @@ RUN apt install python3-pip -y
 RUN apt-get install python3-opencv -y
 RUN apt install -y ros-noetic-rviz
 RUN apt install -y nano
-
+RUN apt install ros-noetic-teleop-twist-keyboard
 
 # Switch from root to user
 USER $USERNAME
@@ -48,7 +48,8 @@ RUN echo "source ./devel/setup.bash" >> ~/.bashrc
 # x11 apps for testing GUI applications
 RUN sudo apt install -y x11-apps
 
-
+RUN pip install git+https://github.com/RobLibs/Rosmaster_Lib@V3.3.9
+RUN pip install ipywidgets
 ################################
 ## ADD ANY CUSTOM SETUP BELOW ##
 ################################
@@ -59,3 +60,4 @@ RUN sudo apt install -y x11-apps
 # sudo chmod 666 /dev/ttyUSB0
 # pip install git+https://github.com/RobLibs/Rosmaster_Lib@V3.3.9
 # pip install ipywidgets
+# sudo apt install ros-noetic-teleop-twist-keyboard

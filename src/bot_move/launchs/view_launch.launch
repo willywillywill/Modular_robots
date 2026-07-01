@@ -1,4 +1,11 @@
 <launch>
+    <include file="$(find rplidar_ros)/launch/rplidar_a1.launch" />
+    
+    <node pkg="tf2_ros"
+      type="static_transform_publisher"
+      name="laser_tf"
+      args="0 0 0 0 0 0 base_link laser"/>
+
     <node
         pkg="rviz"
         type="rviz" 

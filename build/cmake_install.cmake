@@ -147,7 +147,6 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/ros_ws/build/gtest/cmake_install.cmake")
   include("/ros_ws/build/bot_move/cmake_install.cmake")
-  include("/ros_ws/build/serial_stm32/cmake_install.cmake")
   include("/ros_ws/build/rplidar_ros/cmake_install.cmake")
 
 endif()
