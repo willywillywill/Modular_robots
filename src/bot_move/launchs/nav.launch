@@ -1,0 +1,19 @@
+<launch>
+    <node pkg="move_base" type="move_base" name="move_base">
+        <rosparam file="$(find my_robot)/config/costmap_common.yaml"
+                  command="load"/>
+
+        <rosparam file="$(find my_robot)/config/global_costmap.yaml"
+                  command="load"/>
+
+        <rosparam file="$(find my_robot)/config/local_costmap.yaml"
+                  command="load"/>
+
+        <rosparam file="$(find my_robot)/config/dwa_local_planner.yaml"
+                  command="load"/>
+
+    
+    </node>
+
+
+</launch>

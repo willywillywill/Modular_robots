@@ -15,8 +15,6 @@ RUN apt-get update && \
     echo "$USERNAME ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/$USERNAME && \
     chmod 0440 /etc/sudoers.d/$USERNAME
 
-
-
 RUN apt install ros-noetic-turtlesim -y
 RUN apt install ros-noetic-slam-gmapping -y
 RUN apt install python3-pip -y
@@ -50,6 +48,9 @@ RUN sudo apt install -y x11-apps
 
 RUN pip install git+https://github.com/RobLibs/Rosmaster_Lib@V3.3.9
 RUN pip install ipywidgets
+
+
+
 ################################
 ## ADD ANY CUSTOM SETUP BELOW ##
 ################################
@@ -61,3 +62,6 @@ RUN pip install ipywidgets
 # pip install git+https://github.com/RobLibs/Rosmaster_Lib@V3.3.9
 # pip install ipywidgets
 # sudo apt install ros-noetic-teleop-twist-keyboard
+# sudo apt install ros-noetic-rqt-tf-tree -y
+# sudo apt install ros-noetic-hector-mapping
+# sudo apt install ros-noetic-navigation -y
