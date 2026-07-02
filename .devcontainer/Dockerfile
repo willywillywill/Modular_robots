@@ -15,13 +15,18 @@ RUN apt-get update && \
     echo "$USERNAME ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/$USERNAME && \
     chmod 0440 /etc/sudoers.d/$USERNAME
 
-RUN apt install ros-noetic-turtlesim -y
-RUN apt install ros-noetic-slam-gmapping -y
+
 RUN apt install python3-pip -y
 RUN apt-get install python3-opencv -y
 RUN apt install -y ros-noetic-rviz
 RUN apt install -y nano
+RUN apt install ros-noetic-turtlesim -y
+RUN apt install ros-noetic-slam-gmapping -y
 RUN apt install ros-noetic-teleop-twist-keyboard
+RUN apt install ros-noetic-navigation -y
+RUN apt install ros-noetic-hector-mapping
+RUN apt install ros-noetic-rqt-tf-tree -y
+
 
 # Switch from root to user
 USER $USERNAME
