@@ -7,16 +7,16 @@
     <node 
         name="move_subscriber" 
         pkg="bot_move" 
-        type="move_sub.py" 
-        args="$(arg com_port)"
-     />
+        type="move_sub.py">
+        <param name="com_port" value="$(arg com_port)" />
+    </node>
     
     <node 
         name="odom_publisher" 
         pkg="bot_move" 
-        type="odom_pub.py" 
-        args="$(arg com_port)"
-     />
+        type="odom_pub.py">
+        <param name="com_port" value="$(arg com_port)" />
+    </node>
 
     <node
         pkg="teleop_twist_keyboard"
