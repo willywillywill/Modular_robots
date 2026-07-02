@@ -5,4 +5,4 @@ Description: Description of bot_move
 Version: 0.0.0
 Cflags: 
 Libs: -L${prefix}/lib 
-Requires: 
+Requires: geometry_msgs nav_msgs roscpp rospy std_msgs tf
