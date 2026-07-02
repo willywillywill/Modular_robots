@@ -1,5 +1,6 @@
 global_frame: odom
 robot_base_frame: base_link
+transform_tolerance: 0.5
 
 rolling_window: true
 
