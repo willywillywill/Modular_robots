@@ -68,7 +68,7 @@ class Odom:
 
 if __name__ == "__main__":
     try:
-        com_port = rospy.get_param("~com_port", "/dev/ttyUSB0")
+        com_port = rospy.get_param("~com_port", "/dev/ttyUSB1")
         bot = Rosmaster(com=com_port)
         bot.create_receive_threading()
         odom = Odom(bot)

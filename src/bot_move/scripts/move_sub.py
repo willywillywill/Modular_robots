@@ -26,7 +26,7 @@ class Driver:
 
 if __name__ == "__main__":
     try:
-        com_port = rospy.get_param("~com_port", "/dev/ttyUSB0")
+        com_port = rospy.get_param("~com_port", "/dev/ttyUSB1")
         bot = Rosmaster(com=com_port)
         driver = Driver(bot)
 

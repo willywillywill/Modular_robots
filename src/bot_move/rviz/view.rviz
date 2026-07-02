@@ -7,6 +7,8 @@ Panels:
         - /Global Options1
         - /Status1
         - /Odometry1
+        - /TF1
+        - /LaserScan1
         - /Map1
       Splitter Ratio: 0.5
     Tree Height: 555
@@ -99,11 +101,7 @@ Visualization Manager:
           Value: true
         laser:
           Value: true
-        map:
-          Value: true
         odom:
-          Value: true
-        scanmatcher_frame:
           Value: true
       Marker Alpha: 1
       Marker Scale: 1
@@ -112,13 +110,10 @@ Visualization Manager:
       Show Axes: true
       Show Names: true
       Tree:
-        map:
-          odom:
-            base_link:
-              laser:
-                {}
-          scanmatcher_frame:
-            {}
+        odom:
+          base_link:
+            laser:
+              {}
       Update Interval: 0
       Value: true
     - Alpha: 1
