@@ -1,25 +1,37 @@
 <launch>
     <arg name="com_port" default="/dev/ttyUSB1" />
-    <include file="$(find rplidar_ros)/launch/rplidar_a1.launch" />
     
-    <node pkg="tf2_ros"
-      type="static_transform_publisher"
-      name="laser_tf"
-      args="0 0 0 0 0 0 base_link laser"/>
-  
-
+    <node name="rplidarNode"          pkg="rplidar_ros"  type="rplidarNode" output="screen">
+        <param name="serial_port"         type="string" value="/dev/ttyUSB0"/>
+        <param name="serial_baudrate"     type="int"    value="115200"/>
+        <param name="frame_id"            type="string" value="laser"/>
+        <param name="inverted"            type="bool"   value="false"/>
+        <param name="angle_compensate"    type="bool"   value="true"/>
+    </node>
     <node 
-        name="move_subscriber" 
-        pkg="bot_move" 
-        type="move_sub.py">
+        pkg="tf2_ros"
+        type="static_transform_publisher"
+        name="laser_tf"
+        args="0 0 0 0 0 0 base_link laser"
+        output="screen" />
+
+    <node
+        pkg="bot_move"
+        type="move_sub.py"
+        name="move_sub">
+        
         <param name="com_port" value="$(arg com_port)" />
     </node>
-    
-    <node 
-        name="odom_publisher" 
-        pkg="bot_move" 
-        type="odom_pub.py">
+
+    <node
+        pkg="bot_move"
+        type="odom_pub.py"
+        name="odom_pub">
+
         <param name="com_port" value="$(arg com_port)" />
+        <param name="vx_deadband" value="0.01" />
+        <param name="vy_deadband" value="0.01" />
+        <param name="wz_deadband" value="0.01" />
     </node>
 
     <node
@@ -30,15 +42,26 @@
         <remap from="/cmd_vel" to="/move_topic"/>
     </node>
 
-    
-    
+
+    <node
+        pkg="hector_mapping"
+        type="hector_mapping"
+        name="hector_mapping"
+        output="screen">
+
+        <param name="map_frame" value="map" />
+        <param name="odom_frame" value="odom" />
+        <param name="base_frame" value="base_link" />
+        <param name="pub_map_odom_transform" value="true" />
+        <param name="scan_topic" value="scan" />
+        <param name="transform_tolerance" value="1.0" />
+    </node>
 
     <node
         pkg="rviz"
         type="rviz" 
         name="rviz"
         args="-d $(find bot_move)/rviz/view.rviz"
-    />
-
+        output="screen" />
 
 </launch>
